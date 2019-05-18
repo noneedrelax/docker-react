@@ -7,3 +7,18 @@ before_install:
  
 script:
  - docker run noneedrelax/docker-react npm run test -- --coverage
+
+# Do remmeber yaml has a predefineed way to get provider services. 
+deploy: 
+ provider: elasticbeanstalk 
+ region: "us-west-2"
+ app: "docker"
+ env: "Docker-env" 
+ bucket_name: "elasticbeanstalk-us-west-2-563421743711"
+ bucket_path: "docker"
+ # This is to tell only changes on master will trigger the deploy 
+ on:
+  branch: master 
+ access_key_id: "$AWS_ACCESS_KEY"
+ secret_access_key:
+  secure: "$AWS_SECRET_KEY"
