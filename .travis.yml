@@ -8,6 +8,8 @@ services:
  
 before_install:
  - docker build -t noneedrelax/docker-react -f Dockerfile.dev . 
+ - "./ecr_credentials.sh"
+ - echo "hello world"
  
 script:
  - docker run noneedrelax/docker-react npm run test -- --coverage
