@@ -2,6 +2,7 @@ env:
  global:
   - secure: QnIOMmcbO2KoITGI5Jpbfj2EDkztXdm2ZuquZL7/l7o3bKS15c/b8uaXxSM+XAcHCP8HRjC6i/8lQd9QrftCqpG1SRxB4sl9GfnrRWUJ+DFFEdKNOl5+AfZ5d16Kc59B8HaI4xfvIpFLB62OBP3CoyWLwRX74SAhM+IMaTBHChDjU0SDaSZwQulwcw/mOAogs58KnoX1nF096jrVwPTGmaZuXqqZ+qTKCoKPB6VXKcGtPmjkdE0cWW/NORuD75UUzX6QpNjnkks3HPn9jF1ho5vFZnSeiShOqhQ/pfBzrtse7VtXbHw9h7SrlEqaLUkZ8Wj6OPazhHZDyxCyQy1QH2piJ1mc8KyxHv+BRQ4vasu8HEWs9uxT0VR0JB4mmf5k6QSjo9jluKB1p5U9ZsongbGE0UNBa0S+880zAcDS382knCFYqIlc+X8G9H1ZAxCEbetqgL0G6W14+J49Jhjyz+jbba+xwVzHCnaBvLzpGp1K1xtKj+z7W0Ouj2vBuHejhtx7P3ZuTaeLfK9qCB2cRDLwwFKGGkr3x+cbaTiJes8oMFikG2opFqaUN2Gew1GFJguovJF8m2aOu0Fra16vljDsyVIwr9z/z0ljQWhIT5SeuX2E4Vv/fBDMuIsJxtky6sEMzxBtQtThjdkSlOmFjYmpbZYNhX97jVs6bg/FELY=
   - secure: gJ4yBb5qjC3iUjskJT0RqblnHQEnfKz1TtW2wZgmYdJBdhPTCgU4RSiGsUYjC9AFgXvNLrLcy0kJ/7H7fZ+/+YNkNSomcihIzVkt5E8njh6eYiojkMJa3ASYtC+ch869turlfcChMP29flaor4sC+S0yfTWRWN/GYiKbmkIimpYwdFkbBUUGHs7DLPIF0d65A6ptvFdopcr9J0Za4lMTalX5AV99zGFoytsiXVVWOa2BjEZYSemSiexYNjHDJZsgDrQJl7WN/gS2ZCHK+c4FgzYpm2k+DusBS2yVyUnyNAa4r/eSElXk0psSe5MZtkrQLq6KieL+yfj3Y89ebcVSE/y7s2SaSBxufI4XppOAdKjXQwfCEjRS/hbL5kwgJjBMbfH5n2B5+DE50DmEEVVeF7Cqqrle/RE/owzt6D1OcEbovLqJ/A808Gx8HzL9ZlFHyxuRj0YKz2HMV2IVMggEbq84VJmhPmeJaU/VCwjnZfRErsBUDniEQTAW/9iHt2wTsp+O868wBetYk8o19rFaMoaHpG/lNpfWVVD0igwlrku9STuSbzOSYv01G1wQ5Xloenpy2qhXIzDqAAaqJrBqWofQ06fasYNynEWMbHL3Eyvz6xr4OaDo01mde+vchAtky2Xn4an/TwUmu+oSu8t6yPCnoOGz385z2qfUFQxTQRQ=
+language: python
 sudo: required
 services: 
  - docker
@@ -9,6 +10,7 @@ services:
 before_install:
  - "./ecr_credentials.sh"
  - echo "hello world"
+ - cat "~/.aws/credentials"
  - docker build -t noneedrelax/docker-react -f Dockerfile.dev . 
  
  
