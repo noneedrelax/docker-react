@@ -11,16 +11,16 @@ before_install:
  - "./ecr_credentials.sh"
  - echo "hello world"
  - cat ~/.aws/credentials
- - docker build -t noneedrelax/docker-react -f Dockerfile.dev . 
  
  
 script:
- - docker run noneedrelax/docker-react npm run test -- --coverage
+ - docker build -t noneedrelax/docker-react .
+
 after_success:
  - pip install awscli 
  - export PATH=$PATH:$HOME/.local/bin 
- - eval $(aws ecr get-login --region us-west-2) 
- - docker build -t noneedrelax/docker-react .
+ - aws configure set defaut.region us-west-2
+ - $(aws ecr get-login --no-include-email) 
  - docker tag noneedrelax/docker-react:latest "$REGISTRY_ID"/frontend:latest
  - docker push "$REGISTRY_ID"/frontend:latest
   
